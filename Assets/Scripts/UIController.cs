@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public GameObject handZone;
     public GameObject baralhoPrefab;
     public GameObject cartaPrefab;
 
@@ -23,6 +24,7 @@ public class UIController : MonoBehaviour
 
     public void InstanciaCarta(Carta carta)
     {
-        GameObject cartaTela = Instantiate(cartaPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject cartaTela = Instantiate(cartaPrefab, new Vector3(0, 0, 0), Quaternion.identity, handZone.transform);
+        cartaTela.GetComponent<CartaController>().Init(carta);
     }
 }

@@ -31,7 +31,7 @@ public class BoardController : MonoBehaviour
 
         uIController = GetComponent<UIController>();
         // uIController.InstanciaBaralho();
-        // uIController.InstanciaCarta(player1.cartasPlayer[0]);
+        uIController.InstanciaCarta(player1.cartasPlayer[0]);
     }
 
     private void FixedUpdate()
