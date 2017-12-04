@@ -15,9 +15,4 @@ public class Carta
         Nome = nome;
         Naipe = naipe;
     }
-
-    public override string ToString()
-    {
-        return Nome.ToString() + " - " + Naipe.ToString();
-    }
 }

@@ -31,9 +31,7 @@ public class BoardController : MonoBehaviour
 
         uIController = GetComponent<UIController>();
         // uIController.InstanciaBaralho();
-        uIController.InstanciaCarta(player1.cartasPlayer[0]);
-        // Debug.Log (player1.nome + imprime (player1.cartasPlayer));
-        // Debug.Log (player2.nome + imprime (player2.cartasPlayer));
+        // uIController.InstanciaCarta(player1.cartasPlayer[0]);
     }
 
     private void FixedUpdate()
@@ -56,26 +54,6 @@ public class BoardController : MonoBehaviour
     private void turno(Player primeiroJogador, Player segundoJogador)
     {
         primeiraCarta = primeiroJogador.Joga(null);
-        // Debug.Log ("Carta Jogada: " + primeiroJogador.nome + ": " + primeiraCarta.ToString ());
         segundaCarta = segundoJogador.Joga(primeiraCarta);
-        // Debug.Log ("Carta Jogada: " + segundoJogador.nome + ": " + segundaCarta.ToString ());
-
-        // Debug.Log (player1.nome + imprime (player1.cartasPlayer));
-        // Debug.Log (player2.nome + imprime (player2.cartasPlayer));
-    }
-
-    private string imprime(List<Carta> cartas)
-    {
-        string retorno = "[ ";
-        foreach (Carta carta in cartas)
-        {
-            retorno += carta.ToString() + ", ";
-        }
-        return retorno + " ]";
-    }
-
-    public string ola()
-    {
-        return "ola";
     }
 }
