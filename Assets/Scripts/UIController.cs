@@ -22,17 +22,18 @@ public class UIController : MonoBehaviour
     public void InstanciaBaralho()
     {
         GameObject baralho = Instantiate(cartaPrefab, new Vector3(0, 0, 0), Quaternion.identity, deckArea.transform);
+        baralho.GetComponent<CartaController>().Init(null, true);
     }
 
     public void InstanciaCartaPlayer(Carta carta)
     {
         GameObject cartaTela = Instantiate(cartaPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerArea.transform);
-        cartaTela.GetComponent<CartaController>().Init(carta);
+        cartaTela.GetComponent<CartaController>().Init(carta, false);
     }
 
     public void InstanciaCartaEnemy(Carta carta)
     {
         GameObject cartaTela = Instantiate(cartaPrefab, new Vector3(0, 0, 0), Quaternion.identity, enemyArea.transform);
-        cartaTela.GetComponent<CartaController>().Init(carta);
+        cartaTela.GetComponent<CartaController>().Init(carta, false);
     }
 }

@@ -32,7 +32,6 @@ public class BoardController : MonoBehaviour
             uIController.InstanciaCartaPlayer(carta1);
             Carta carta2 = player2.PegaCarta();
             uIController.InstanciaCartaEnemy(carta2);
-           
         }
     }
 
