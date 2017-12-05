@@ -16,7 +16,7 @@ public class Player
         this.cartasPlayer = new List<Carta>();
     }
 
-    /* Pega uma carta do baralho e adiciona às cartas do player, retorna false se o baralho acaboou */
+    /* Pega uma carta do baralho e adiciona às cartas do player, retorna nulo se o baralho acabou */
     public Carta PegaCarta()
     {
         if (baralho.GetNumeroCartas() > 0)

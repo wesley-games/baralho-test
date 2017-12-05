@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 222616248017609680}
   - component: {fileID: 114840815809634654}
   - component: {fileID: 225732946031964430}
-  - component: {fileID: 114394014773591292}
   - component: {fileID: 114315237208170236}
   m_Layer: 5
   m_Name: Carta
@@ -76,18 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c90db2e5f52e44095e1708c2bd2f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114394014773591292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675702950094874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96524824ed98baa4792beabc50164497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentToReturnTo: {fileID: 0}
 --- !u!114 &114827477054548736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,7 +187,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1740052003941784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 18.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224646752833376620}
@@ -218,7 +205,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1865025196485342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 95.29001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224646752833376620}

@@ -13,16 +13,13 @@ public class CartaController : MonoBehaviour
         Image image = GetComponentInChildren<Image>();
         Text text = GetComponentInChildren<Text>();
         text.text = carta.Nome.ToString();
-    }
 
-    void Start()
-    {
+        Resources.Load("Naipes");
+        switch (carta.Naipe)
+        {
+            case Carta.Naipes.COPAS:
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+                break;
+        }
     }
 }

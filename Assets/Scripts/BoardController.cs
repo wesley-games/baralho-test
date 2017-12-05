@@ -17,7 +17,10 @@ public class BoardController : MonoBehaviour
 
     private void Start()
     {
+        uIController = GetComponent<UIController>();
         baralho = new Baralho();
+        uIController.InstanciaBaralho();
+
         player1 = new Player("Fulano  ", baralho);
         player2 = new Player("Ciclano ", baralho);
         primeiroJogador = player1;
@@ -25,13 +28,12 @@ public class BoardController : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            player1.PegaCarta();
-            player2.PegaCarta();
+            Carta carta1 = player1.PegaCarta();
+            uIController.InstanciaCartaPlayer(carta1);
+            Carta carta2 = player2.PegaCarta();
+            uIController.InstanciaCartaEnemy(carta2);
+           
         }
-
-        uIController = GetComponent<UIController>();
-        // uIController.InstanciaBaralho();
-        uIController.InstanciaCarta(player1.cartasPlayer[0]);
     }
 
     private void FixedUpdate()
