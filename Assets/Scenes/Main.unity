@@ -354,8 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57eaf8d50b1594e458dc12df0126d541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cartaPrefab: {fileID: 1675702950094874, guid: 30d91d7c177a9bd46aa1e9223dfb602a,
-    type: 2}
+  cardPrefab: {fileID: 1675702950094874, guid: 30d91d7c177a9bd46aa1e9223dfb602a, type: 2}
   playerArea: {fileID: 2097337150}
   enemyArea: {fileID: 1562631027}
   matchArea: {fileID: 1452299700}

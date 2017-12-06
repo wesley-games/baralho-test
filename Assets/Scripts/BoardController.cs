@@ -12,6 +12,7 @@ public class BoardController : MonoBehaviour
     private Player primeiroJogador, segundoJogador;
     private Carta primeiraCarta, segundaCarta;
     private bool alguemGanhou = false;
+    private int rodadas = 0;
 
     private UIController uIController;
 
@@ -37,7 +38,8 @@ public class BoardController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!alguemGanhou)
+        // if (!alguemGanhou)
+        if (rodadas < 1)
         {
             turno(primeiroJogador, segundoJogador);
             if (segundaCarta.Nome > primeiraCarta.Nome)
@@ -49,12 +51,16 @@ public class BoardController : MonoBehaviour
             {
                 alguemGanhou = true;
             }
+            rodadas++;
+            uIController.TerminaTurno();
         }
     }
 
     private void turno(Player primeiroJogador, Player segundoJogador)
     {
         primeiraCarta = primeiroJogador.Joga(null);
+        uIController.JogaCarta(primeiraCarta);
         segundaCarta = segundoJogador.Joga(primeiraCarta);
+        uIController.JogaCarta(segundaCarta);
     }
 }
