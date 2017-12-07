@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Player
 {
-
     public string nome { get; set; }
-    private Baralho baralho;
+    public bool isEnemy { get; set; }
     public List<Carta> cartasPlayer { get; set; }
+    private BaralhoController baralho;
 
-    public Player(string nome, Baralho baralho)
+    public Player(string nome, bool isEnemy, BaralhoController baralho)
     {
         this.nome = nome;
-        this.baralho = baralho;
+        this.isEnemy = isEnemy;
         this.cartasPlayer = new List<Carta>();
+        this.baralho = baralho;
     }
 
     /* Pega uma carta do baralho e adiciona às cartas do player, retorna nulo se o baralho acabou */
@@ -21,7 +22,7 @@ public class Player
     {
         if (baralho.GetNumeroCartas() > 0)
         {
-            Carta carta = baralho.RemoveCartaRandom();
+            Carta carta = baralho.RemoveCartaRandom(isEnemy);
             cartasPlayer.Add(carta);
             return carta;
         }

@@ -51,7 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Baralho.cs" />
+     <Compile Include="Assets\Scripts\BaralhoController.cs" />
      <Compile Include="Assets\Scripts\BoardController.cs" />
      <Compile Include="Assets\Scripts\Carta.cs" />
      <Compile Include="Assets\Scripts\CartaController.cs" />

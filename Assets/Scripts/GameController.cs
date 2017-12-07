@@ -5,14 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public BaralhoController baralhoController;
     public BoardController boardController;
     public UIController uIController;
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-    }
 }

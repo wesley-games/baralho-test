@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332185596}
   - component: {fileID: 1332185595}
+  - component: {fileID: 1332185599}
   - component: {fileID: 1332185597}
   - component: {fileID: 1332185598}
   m_Layer: 0
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2464b4734abae0243a11fda228c8df0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baralhoController: {fileID: 1332185599}
   boardController: {fileID: 1332185597}
   uIController: {fileID: 1332185598}
 --- !u!4 &1332185596
@@ -359,6 +361,17 @@ MonoBehaviour:
   enemyArea: {fileID: 1562631027}
   matchArea: {fileID: 1452299700}
   deckArea: {fileID: 210322188}
+--- !u!114 &1332185599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332185594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0a43391e2e3964f892d320e96ba2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1388192055
 GameObject:
   m_ObjectHideFlags: 0
