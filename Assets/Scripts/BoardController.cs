@@ -31,8 +31,8 @@ public class BoardController : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            Carta carta1 = player1.PegaCarta();
-            Carta carta2 = player2.PegaCarta();
+            player1.PegaCarta();
+            player2.PegaCarta();
         }
     }
 

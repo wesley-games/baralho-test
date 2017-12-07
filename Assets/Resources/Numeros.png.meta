@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8f3106b3955e2434091c80be2b0f2c11
-timeCreated: 1512084672
+timeCreated: 1512683286
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,6 +14,9 @@ TextureImporter:
     21300014: Numeros_7
     21300016: Numeros_8
     21300018: Numeros_9
+    21300020: Numeros_10
+    21300022: Numeros_11
+    21300024: Numeros_12
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -41,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -218,6 +221,48 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
+        y: 0
+        width: 8
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Numeros_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 8
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Numeros_11
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 8
+        height: 9
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Numeros_12
+      rect:
+        serializedVersion: 2
+        x: 96
         y: 0
         width: 8
         height: 9
