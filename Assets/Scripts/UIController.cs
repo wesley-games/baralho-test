@@ -52,6 +52,9 @@ public class UIController : MonoBehaviour
 
     public void TerminaTurno()
     {
-        // TODO pegar e destruir os filhos do matchArea
+        foreach (Transform child in matchArea.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 }
