@@ -44,8 +44,10 @@ public class UIController : MonoBehaviour
     public void JogaCarta(Carta card)
     {
         GameObject cardOnHand;
-        cardsPlayed.TryGetValue(card, out cardOnHand);
-        if (cardOnHand != null) cardOnHand.transform.SetParent(matchArea.transform);
+        if (cardsPlayed.TryGetValue(card, out cardOnHand))
+        {
+            cardOnHand.transform.SetParent(matchArea.transform);
+        }
     }
 
     public void TerminaTurno()

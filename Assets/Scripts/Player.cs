@@ -34,6 +34,10 @@ public class Player
         return carta;
     }
 
+    // TODO a lista de cartasPossiveis é montada em todas as chamadas dessa função, mas não deveria,
+    // ela só precisaria ser montada pra avaliar uma vez, nas próximas chamadas significa que não
+    // havia nenhuma carta possível e o jogador foi obrigado a pescar, então ele só precisaria avaliar
+    // a carta pescada.
     private Carta DecideCarta(Carta cartaJogada)
     {
         Carta cartaPraJogar = null;
