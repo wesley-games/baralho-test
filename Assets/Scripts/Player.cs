@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -78,22 +79,23 @@ public class Player
         return cartaPraJogar;
     }
 
-    public Carta Joga(Carta cartaJogada)
+    public IEnumerator Joga(Carta cartaJogada, Action<Carta> result)
     {
-        Carta carta = null;
+        Carta cartaPraJogar = null;
         if (cartaJogada == null)
         {
             int index = UnityEngine.Random.Range(0, cartasPlayer.Count);
-            carta = JogaCarta(cartasPlayer[index]);
+            cartaPraJogar = JogaCarta(cartasPlayer[index]);
         }
         else
         {
-            Carta cartaPraJogar = DecideCarta(cartaJogada);
+            cartaPraJogar = DecideCarta(cartaJogada);
             if (cartaPraJogar != null)
             {
-                carta = JogaCarta(cartaPraJogar);
+                cartaPraJogar = JogaCarta(cartaPraJogar);
             }
         }
-        return carta;
+        yield return 0;
+        result(cartaPraJogar);
     }
 }

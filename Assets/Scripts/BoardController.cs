@@ -32,28 +32,14 @@ public class BoardController : MonoBehaviour
     private IEnumerator Jogo()
     {
         yield return StartCoroutine(uIController.InstanciaBaralho());
-
         for (int i = 0; i < 3; i++)
         {
             player1.PegaCarta();
             player2.PegaCarta();
         }
-
         while (!alguemGanhou)
         {
             yield return StartCoroutine(Turno(primeiroJogador, segundoJogador));
-
-            if (segundaCarta.Nome > primeiraCarta.Nome)
-            {
-                primeiroJogador = player2;
-                segundoJogador = player1;
-            }
-
-            if (primeiroJogador.cartasPlayer.Count == 0 || segundoJogador.cartasPlayer.Count == 0)
-            {
-                alguemGanhou = true;
-            }
-
             yield return StartCoroutine(uIController.TerminaTurno());
         }
         Debug.Log("JOGO - E O JOGO ACABA AQUI");
@@ -62,9 +48,18 @@ public class BoardController : MonoBehaviour
 
     private IEnumerator Turno(Player primeiroJogador, Player segundoJogador)
     {
-        primeiraCarta = primeiroJogador.Joga(null);
+        yield return StartCoroutine(primeiroJogador.Joga(null, (carta) => primeiraCarta = carta));
         yield return StartCoroutine(uIController.JogaCarta(primeiraCarta));
-        segundaCarta = segundoJogador.Joga(primeiraCarta);
+        yield return StartCoroutine(segundoJogador.Joga(primeiraCarta, (carta) => segundaCarta = carta));
         yield return StartCoroutine(uIController.JogaCarta(segundaCarta));
+        if (segundaCarta.Nome > primeiraCarta.Nome)
+        {
+            primeiroJogador = player2;
+            segundoJogador = player1;
+        }
+        if (primeiroJogador.cartasPlayer.Count == 0 || segundoJogador.cartasPlayer.Count == 0)
+        {
+            alguemGanhou = true;
+        }
     }
 }
