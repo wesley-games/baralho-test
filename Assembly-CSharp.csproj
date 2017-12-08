@@ -55,8 +55,6 @@
      <Compile Include="Assets\Scripts\BoardController.cs" />
      <Compile Include="Assets\Scripts\Carta.cs" />
      <Compile Include="Assets\Scripts\CartaController.cs" />
-     <Compile Include="Assets\Scripts\Draggable.cs" />
-     <Compile Include="Assets\Scripts\DropZone.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Inimigo.cs" />
      <Compile Include="Assets\Scripts\Jogador.cs" />

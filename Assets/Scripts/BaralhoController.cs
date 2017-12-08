@@ -33,11 +33,11 @@ public class BaralhoController : MonoBehaviour
         Cartas.RemoveAt(id);
         if (isEnemy)
         {
-            uIController.InstanciaCartaEnemy(carta);
+            StartCoroutine(uIController.InstanciaCartaEnemy(carta));
         }
         else
         {
-            uIController.InstanciaCartaPlayer(carta);
+            StartCoroutine(uIController.InstanciaCartaPlayer(carta));
         }
         return carta;
     }
