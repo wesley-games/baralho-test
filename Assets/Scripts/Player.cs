@@ -6,14 +6,12 @@ using UnityEngine;
 public class Player
 {
     public string nome { get; set; }
-    public bool isEnemy { get; set; }
     public List<Carta> cartasPlayer { get; set; }
     private BaralhoController baralho;
 
-    public Player(string nome, bool isEnemy, BaralhoController baralho)
+    public Player(string nome, BaralhoController baralho)
     {
         this.nome = nome;
-        this.isEnemy = isEnemy;
         this.cartasPlayer = new List<Carta>();
         this.baralho = baralho;
     }
@@ -23,11 +21,30 @@ public class Player
     {
         if (baralho.GetNumeroCartas() > 0)
         {
-            Carta carta = baralho.RemoveCartaRandom(isEnemy);
+            Carta carta = baralho.RemoveCartaRandom();
             cartasPlayer.Add(carta);
             return carta;
         }
         return null;
+    }
+
+    public Carta PegaCartaAteAchar(Carta cartaPraAchar, out List<Carta> cartasPescadas)
+    {
+        cartasPescadas = new List<Carta>();
+        bool achou = false;
+        Carta cartaRetorno = null;
+        while (baralho.GetNumeroCartas() > 0 && !achou)
+        {
+            Carta carta = baralho.RemoveCartaRandom();
+            cartasPlayer.Add(carta);
+            cartasPescadas.Add(carta);
+            if (carta.isMesmoNaipe(cartaPraAchar))
+            {
+                cartaRetorno = carta;
+                achou = true;
+            }
+        }
+        return cartaRetorno;
     }
 
     private Carta JogaCarta(Carta carta)
@@ -46,7 +63,7 @@ public class Player
         List<Carta> cartasPossiveis = new List<Carta>();
         foreach (Carta c in cartasPlayer)
         {
-            if (c.Naipe == cartaJogada.Naipe)
+            if (c.isMesmoNaipe(cartaJogada))
             {
                 cartasPossiveis.Add(c);
             }
@@ -69,19 +86,13 @@ public class Player
                 cartaPraJogar = menor;
             }
         }
-        else
-        {
-            if (PegaCarta() != null)
-            {
-                cartaPraJogar = DecideCarta(cartaJogada);
-            }
-        }
         return cartaPraJogar;
     }
 
-    public IEnumerator Joga(Carta cartaJogada, Action<Carta> result)
+    public Carta Joga(Carta cartaJogada, out List<Carta> cartasPescadas)
     {
         Carta cartaPraJogar = null;
+        cartasPescadas = null;
         if (cartaJogada == null)
         {
             int index = UnityEngine.Random.Range(0, cartasPlayer.Count);
@@ -94,8 +105,11 @@ public class Player
             {
                 cartaPraJogar = JogaCarta(cartaPraJogar);
             }
+            else
+            {
+                cartaPraJogar = PegaCartaAteAchar(cartaJogada, out cartasPescadas);
+            }
         }
-        yield return 0;
-        result(cartaPraJogar);
+        return cartaPraJogar;
     }
 }

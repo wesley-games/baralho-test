@@ -15,4 +15,14 @@ public class Carta
         Nome = nome;
         Naipe = naipe;
     }
+
+    public bool isMesmoNaipe(Carta carta)
+    {
+        return this.Naipe == carta.Naipe;
+    }
+
+    public override string ToString()
+    {
+        return Nome + " - " + Naipe;
+    }
 }
