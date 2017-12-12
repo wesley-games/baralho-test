@@ -92,7 +92,7 @@ public class Player
     public Carta Joga(Carta cartaJogada, out List<Carta> cartasPescadas)
     {
         Carta cartaPraJogar = null;
-        cartasPescadas = null;
+        cartasPescadas = new List<Carta>();
         if (cartaJogada == null)
         {
             int index = UnityEngine.Random.Range(0, cartasPlayer.Count);

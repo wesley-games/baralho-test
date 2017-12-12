@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     public GameObject matchArea;
     public GameObject deckArea;
 
-    private int timeToWait = 3;
+    private int timeToWait = 1;
     private Dictionary<Carta, GameObject> cardsPlayed;
 
     private void Awake()
@@ -24,7 +24,6 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
         GameObject baralho = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity, deckArea.transform);
         baralho.GetComponent<CartaController>().Init(null, true);
-        yield return new WaitForSeconds(timeToWait);
     }
 
     public IEnumerator InstanciaCartaPlayer(Carta carta)
@@ -33,7 +32,6 @@ public class UIController : MonoBehaviour
         GameObject cartaTela = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity, playerArea.transform);
         cardsPlayed.Add(carta, cartaTela);
         cartaTela.GetComponent<CartaController>().Init(carta, false);
-        yield return new WaitForSeconds(timeToWait);
     }
 
     public IEnumerator InstanciaCartaEnemy(Carta carta)
@@ -42,7 +40,6 @@ public class UIController : MonoBehaviour
         GameObject cartaTela = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity, enemyArea.transform);
         cardsPlayed.Add(carta, cartaTela);
         cartaTela.GetComponent<CartaController>().Init(carta, false);
-        yield return new WaitForSeconds(timeToWait);
     }
 
     public IEnumerator JogaCarta(Carta card)
@@ -53,7 +50,6 @@ public class UIController : MonoBehaviour
         {
             cardOnHand.transform.SetParent(matchArea.transform);
         }
-        yield return new WaitForSeconds(timeToWait);
     }
 
     public IEnumerator TerminaTurno()
@@ -63,6 +59,5 @@ public class UIController : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-        yield return new WaitForSeconds(timeToWait);
     }
 }

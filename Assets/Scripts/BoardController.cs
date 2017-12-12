@@ -18,44 +18,74 @@ public class BoardController : MonoBehaviour
         uIController = GetComponent<UIController>();
         baralhoController = GetComponent<BaralhoController>();
 
-        player1 = new Player("Fulano  ", baralhoController);
-        player2 = new Player("Ciclano ", baralhoController);
+        player1 = new Jogador("Jogador  ", baralhoController);
+        player2 = new Inimigo("Inimigo  ", baralhoController);
         primeiroJogador = player1;
         segundoJogador = player2;
     }
 
     private void Start()
     {
+        StartCoroutine(Jogo());
+    }
+
+    private IEnumerator Jogo()
+    {
+        yield return StartCoroutine(uIController.InstanciaBaralho());
+
         for (int i = 0; i < 3; i++)
         {
-            player1.PegaCarta();
-            player2.PegaCarta();
+            Carta carta;
+            carta = player1.PegaCarta();
+            yield return StartCoroutine(uIController.InstanciaCartaPlayer(carta));
+            carta = player2.PegaCarta();
+            yield return StartCoroutine(uIController.InstanciaCartaEnemy(carta));
         }
+
         while (!alguemGanhou)
         {
             List<Carta> primeirasCartasPescadas = new List<Carta>();
             primeiraCarta = primeiroJogador.Joga(null, out primeirasCartasPescadas);
-            Debug.Log("PLAYER " + primeiroJogador.nome + " JOGA - " + primeiraCarta.ToString() + " (PESCA - " + primeirasCartasPescadas.Count + ")");
+            if (primeirasCartasPescadas.Count > 0)
+            {
+                foreach (Carta carta in primeirasCartasPescadas)
+                {
+                    if (primeiroJogador is Jogador)
+                        yield return StartCoroutine(uIController.InstanciaCartaPlayer(carta));
+                    else
+                        yield return StartCoroutine(uIController.InstanciaCartaEnemy(carta));
+                }
+            }
+            yield return StartCoroutine(uIController.JogaCarta(primeiraCarta));
 
             List<Carta> segundasCartasPescadas = new List<Carta>();
             segundaCarta = segundoJogador.Joga(primeiraCarta, out segundasCartasPescadas);
-            Debug.Log("PLAYER " + segundoJogador.nome + " JOGA - " + segundaCarta.ToString() + " (PESCA - " + segundasCartasPescadas.Count + ")");
+            if (segundasCartasPescadas.Count > 0)
+            {
+                foreach (Carta carta in segundasCartasPescadas)
+                {
+                    if (segundoJogador is Jogador)
+                        yield return StartCoroutine(uIController.InstanciaCartaPlayer(carta));
+                    else
+                        yield return StartCoroutine(uIController.InstanciaCartaEnemy(carta));
+                }
+            }
+            yield return StartCoroutine(uIController.JogaCarta(segundaCarta));
+
             if (segundaCarta.Nome > primeiraCarta.Nome)
             {
-                primeiroJogador = player2;
-                segundoJogador = player1;
+                Player aux = primeiroJogador;
+                primeiroJogador = segundoJogador;
+                segundoJogador = aux;
             }
             if (primeiroJogador.cartasPlayer.Count == 0 || segundoJogador.cartasPlayer.Count == 0)
             {
                 alguemGanhou = true;
             }
+            yield return StartCoroutine(uIController.TerminaTurno());
         }
-        Debug.Log("JOGO - E O JOGO ACABA AQUI");
-        // StartCoroutine(Jogo());
-    }
 
-    private IEnumerator Jogo()
-    {
+        Debug.Log("JOGO - E O JOGO ACABA AQUI");
         yield return 0;
     }
 
