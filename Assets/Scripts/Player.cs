@@ -101,13 +101,13 @@ public class Player
         else
         {
             cartaPraJogar = DecideCarta(cartaJogada);
+            if (cartaPraJogar == null)
+            {
+                cartaPraJogar = PegaCartaAteAchar(cartaJogada, out cartasPescadas);
+            }
             if (cartaPraJogar != null)
             {
                 cartaPraJogar = JogaCarta(cartaPraJogar);
-            }
-            else
-            {
-                cartaPraJogar = PegaCartaAteAchar(cartaJogada, out cartasPescadas);
             }
         }
         return cartaPraJogar;

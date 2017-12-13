@@ -13,6 +13,9 @@ public class BoardController : MonoBehaviour
     private UIController uIController;
     private BaralhoController baralhoController;
 
+    public delegate void OnJogoTerminou();
+    public event OnJogoTerminou JogoTerminou;
+
     private void Awake()
     {
         uIController = GetComponent<UIController>();
@@ -70,71 +73,24 @@ public class BoardController : MonoBehaviour
                         yield return StartCoroutine(uIController.InstanciaCartaEnemy(carta));
                 }
             }
-            yield return StartCoroutine(uIController.JogaCarta(segundaCarta));
+            if (segundaCarta != null)
+                yield return StartCoroutine(uIController.JogaCarta(segundaCarta));
 
-            if (segundaCarta.Nome > primeiraCarta.Nome)
-            {
-                Player aux = primeiroJogador;
-                primeiroJogador = segundoJogador;
-                segundoJogador = aux;
-            }
+            if (segundaCarta != null)
+                if (segundaCarta.Nome > primeiraCarta.Nome)
+                {
+                    Player aux = primeiroJogador;
+                    primeiroJogador = segundoJogador;
+                    segundoJogador = aux;
+                }
             if (primeiroJogador.cartasPlayer.Count == 0 || segundoJogador.cartasPlayer.Count == 0)
             {
                 alguemGanhou = true;
             }
             yield return StartCoroutine(uIController.TerminaTurno());
         }
-
-        Debug.Log("JOGO - E O JOGO ACABA AQUI");
+        StopAllCoroutines();
+        JogoTerminou();
         yield return 0;
     }
-
-    private IEnumerator InicializaPlayers()
-    {
-        yield return 0;
-    }
-
-    private IEnumerator JogadaPlayer(Player player)
-    {
-        yield return 0;
-    }
-
-    private IEnumerator FinalizaTurno()
-    {
-        yield return 0;
-    }
-
-    // private IEnumerator Jogo()
-    // {
-    //     yield return StartCoroutine(uIController.InstanciaBaralho());
-    //     for (int i = 0; i < 3; i++)
-    //     {
-    //         player1.PegaCarta();
-    //         player2.PegaCarta();
-    //     }
-    //     while (!alguemGanhou)
-    //     {
-    //         yield return StartCoroutine(Turno(primeiroJogador, segundoJogador));
-    //         yield return StartCoroutine(uIController.TerminaTurno());
-    //     }
-    //     Debug.Log("JOGO - E O JOGO ACABA AQUI");
-    //     yield return 0;
-    // }
-
-    // private IEnumerator Turno(Player primeiroJogador, Player segundoJogador)
-    // {
-    //     yield return StartCoroutine(primeiroJogador.Joga(null, (carta) => primeiraCarta = carta));
-    //     yield return StartCoroutine(uIController.JogaCarta(primeiraCarta));
-    //     yield return StartCoroutine(segundoJogador.Joga(primeiraCarta, (carta) => segundaCarta = carta));
-    //     yield return StartCoroutine(uIController.JogaCarta(segundaCarta));
-    //     if (segundaCarta.Nome > primeiraCarta.Nome)
-    //     {
-    //         primeiroJogador = player2;
-    //         segundoJogador = player1;
-    //     }
-    //     if (primeiroJogador.cartasPlayer.Count == 0 || segundoJogador.cartasPlayer.Count == 0)
-    //     {
-    //         alguemGanhou = true;
-    //     }
-    // }
 }

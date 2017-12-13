@@ -44,10 +44,12 @@ public class UIController : MonoBehaviour
 
     public IEnumerator JogaCarta(Carta card)
     {
+        Debug.Log("Jogando - " + (card != null ? card.ToString() : "null"));
         yield return new WaitForSeconds(timeToWait);
         GameObject cardOnHand;
         if (cardsPlayed.TryGetValue(card, out cardOnHand))
         {
+            cardsPlayed.Remove(card);
             cardOnHand.transform.SetParent(matchArea.transform);
         }
     }
@@ -55,9 +57,10 @@ public class UIController : MonoBehaviour
     public IEnumerator TerminaTurno()
     {
         yield return new WaitForSeconds(timeToWait);
-        foreach (Transform child in matchArea.transform)
-        {
-            GameObject.Destroy(child.gameObject);
-        }
+        matchArea.transform.DetachChildren();
+        // foreach (Transform child in matchArea.transform)
+        // {
+        //     GameObject.Destroy(child.gameObject);
+        // }
     }
 }
